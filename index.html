@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>touchtype — touch typing trainer</title>
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <aside class="rail">
+    <div class="railbrand">
+      <b>touchtype</b>
+      <span class="idx">type trainer</span>
+    </div>
+
+    <div class="field">
+      <label data-i18n="layout">Layout</label>
+      <select class="fld" data-control="layout" id="swsel"></select>
+    </div>
+
+    <div class="field">
+      <label data-i18n="mapping">Input mapping</label>
+      <select class="fld" data-control="mapping"></select>
+    </div>
+
+    <div class="field">
+      <label data-i18n="level">Level</label>
+      <div class="opts stack">
+        <button data-control="level" data-value="rest" data-i18n="lvl_rest">Resting keys</button>
+        <button data-control="level" data-value="home" data-i18n="lvl_home">Home row</button>
+        <button data-control="level" data-value="home_index" data-i18n="lvl_home_index">Home + index</button>
+        <button data-control="level" data-value="alpha" data-i18n="lvl_alpha">Alphabet</button>
+        <button data-control="level" data-value="alpha_punct" data-i18n="lvl_alpha_punct">Alphabet + punctuation</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label data-i18n="language">Language</label>
+      <select class="fld" data-control="language" id="langsel"></select>
+    </div>
+
+    <div class="field">
+      <label data-i18n="accent">Accent</label>
+      <div class="chips">
+        <span class="chip" data-accent="255" style="--h:255"></span>
+        <span class="chip" data-accent="150" style="--h:150"></span>
+        <span class="chip" data-accent="65" style="--h:65"></span>
+        <span class="chip" data-accent="20" style="--h:20"></span>
+        <span class="chip" data-accent="320" style="--h:320"></span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Keyboard</label>
+      <select class="fld" data-control="hwLayout" id="hwsel"></select>
+      <div class="tg" data-toggle="fingerColors"><span data-i18n="fingers">Finger zones</span><span class="sw"></span></div>
+      <div class="tg" data-toggle="highlightNext"><span data-i18n="nextkey">Next key</span><span class="sw"></span></div>
+      <div class="tg" data-toggle="restingMarkers"><span data-i18n="resting">Resting marks</span><span class="sw"></span></div>
+    </div>
+
+    <div class="railspace"></div>
+    <div class="field">
+      <label data-i18n="theme">Theme</label>
+      <div class="opts">
+        <button data-control="theme" data-value="light" data-i18n="light">Light</button>
+        <button data-control="theme" data-value="dark" data-i18n="dark">Dark</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="work" id="app">
+    <div class="center">
+      <div class="stage">
+        <div class="statbar">
+          <div class="stat accent"><span class="v" id="wpm">0</span><span class="k" data-i18n="wpm">wpm</span></div>
+          <div class="stat"><span class="v" id="acc">100%</span><span class="k" data-i18n="acc">accuracy</span></div>
+          <div class="stat"><span class="v" id="err">0</span><span class="k" data-i18n="err">errors</span></div>
+          <div class="stat"><span class="v" id="time">00:00</span><span class="k" data-i18n="time">time</span></div>
+          <div class="now"><span class="lvtag"><b id="lvlname">Resting keys</b></span><span class="layo" id="lyname">QWERTY</span></div>
+        </div>
+        <div class="tt-wordsview"><div class="tt-words" id="words"></div></div>
+      </div>
+
+      <div class="kbdwrap">
+        <div class="tt-keyboard" id="keyboard"></div>
+        <div class="legend">
+          <span class="ls"><i class="next"></i> <span data-i18n="nextkey">Next key</span></span>
+          <span class="ls"><i class="act"></i> active</span>
+          <span class="ls"><i class="off"></i> off</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="focusnote"><span data-i18n="focusPrompt">Click here to start typing</span></div>
+
+  <!-- Core -->
+  <script src="scripts/data.js"></script>
+  <!-- Hardware layouts (populate TTData.HW) -->
+  <script src="layouts/hardware/ansi.js"></script>
+  <script src="layouts/hardware/iso.js"></script>
+  <script src="layouts/hardware/ansi_ortho.js"></script>
+  <script src="layouts/hardware/iso_ortho.js"></script>
+  <script src="layouts/hardware/ergodox.js"></script>
+  <!-- Software layouts (populate TTData.SW) -->
+  <script src="layouts/software/qwerty.js"></script>
+  <script src="layouts/software/dvorak.js"></script>
+  <!-- App -->
+  <script src="scripts/i18n.js"></script>
+  <script src="scripts/engine.js"></script>
+  <script src="scripts/select.js"></script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      // Populate hardware layout dropdown from registry
+      var hwSel = document.getElementById('hwsel');
+      Object.keys(TTData.HW).forEach(function (k) {
+        var o = document.createElement('option');
+        o.value = k;
+        o.textContent = TTData.HW[k].name;
+        hwSel.appendChild(o);
+      });
+
+      // Populate software layout dropdown from registry
+      var swSel = document.getElementById('swsel');
+      Object.keys(TTData.SW).forEach(function (k) {
+        var o = document.createElement('option');
+        o.value = k;
+        o.textContent = TTData.SW[k].name;
+        swSel.appendChild(o);
+      });
+
+      // Language dropdown
+      var langSel = document.getElementById('langsel');
+      TTi18n.langs.forEach(function (l) {
+        var o = document.createElement('option');
+        o.value = l;
+        o.textContent = TTi18n.get(l).lang;
+        langSel.appendChild(o);
+      });
+
+      var app = TTApp.init({
+        key: 'touchtype',
+        defaults: { theme: 'light', accent: 255, level: 'rest' },
+        els: {
+          root: document.body, words: document.getElementById('words'),
+          keyboard: document.getElementById('keyboard'),
+          wpm: document.getElementById('wpm'), accuracy: document.getElementById('acc'),
+          errors: document.getElementById('err'), time: document.getElementById('time')
+        }
+      });
+
+      function names() {
+        var t = TTi18n.get(app.conf.language);
+        document.getElementById('lvlname').textContent = t['lvl_' + app.conf.level];
+        var sw = TTData.SW[app.conf.layout];
+        document.getElementById('lyname').textContent = sw ? sw.name : app.conf.layout;
+      }
+      names();
+      document.addEventListener('click',  function () { setTimeout(names, 0); });
+      document.addEventListener('change', function () { setTimeout(names, 0); });
+    })();
+  </script>
+</body>
+</html>

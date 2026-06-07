@@ -1,10 +1,10 @@
-/* Bulgarian Phonetic — Level 1: Home row (а с д ф г х й к л) */
+/* Bulgarian Phonetic — Level 2: Home row (а с д ф г х й к л) */
 TTData.addLevel('bg_phonetic', {
   id: 'home',
-  order: 1,
+  order: 2,
   label: 'Home row',
   hint: 'Home row keys: а с д ф г х й к л',
-  ids: ['K_A', 'K_S', 'K_D', 'K_F', 'K_G', 'K_H', 'K_J', 'K_K', 'K_L', 'K_SPACE'],
+  ids: ['K_A', 'K_S', 'K_D', 'K_F', 'K_G', 'K_H', 'K_J', 'K_K', 'K_L', 'K_SEMICOLON', 'K_QUOTE', 'K_SPACE'],
   wordBank: [
     'ад', 'как', 'кал', 'гад', 'лад', 'дал', 'лак', 'гас', 'сал', 'хал',
     'глас', 'клас', 'склад', 'скала', 'каска', 'ласка', 'факс', 'хлад',

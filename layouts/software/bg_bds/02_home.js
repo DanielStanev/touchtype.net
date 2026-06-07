@@ -1,7 +1,7 @@
-/* Bulgarian BDS — Level 1: Home row (ь я а о ж г т н в м ч) */
+/* Bulgarian BDS — Level 2: Home row (ь я а о ж г т н в м ч) */
 TTData.addLevel('bg_bds', {
   id: 'home',
-  order: 1,
+  order: 2,
   label: 'Home row',
   hint: 'Home row keys: ь я а о ж г т н в м ч',
   ids: ['K_A', 'K_S', 'K_D', 'K_F', 'K_G', 'K_H', 'K_J', 'K_K', 'K_L', 'K_SEMICOLON', 'K_QUOTE', 'K_SPACE'],

@@ -1,0 +1,46 @@
+/* Dvorak — Level 4: Home row + B, G, J, Q, W, X, Y, Z */
+TTData.addLevel('dvorak', {
+  id: 'home_extend_2',
+  order: 4,
+  label: 'Home row + B, G, J, Q, W, X, Y, Z',
+  hint: 'Home row + B, G, J, Q, W, X, Y, Z',
+  ids: [
+    'K_A', 'K_S', 'K_D', 'K_F', 'K_G', 'K_H', 'K_J', 'K_K', 'K_L', 'K_SEMICOLON',
+    'K_N', 'K_U', 'K_C', 'K_X', 'K_COMMA', 'K_B', 'K_T', 'K_SLASH'
+  ],
+  wordBank: [
+    'again', 'age', 'ago', 'ahead', 'and', 'any', 'anything', 'anyway',
+    'at', 'baby', 'bad', 'bag', 'band', 'base', 'beat', 'bed', 'been',
+    'begin', 'behind', 'being', 'beside', 'best', 'between', 'beyond',
+    'big', 'bit', 'bite', 'boat', 'body', 'bone', 'both', 'boy', 'bus',
+    'busy', 'but', 'buy', 'by',
+    'date', 'day', 'days', 'dead', 'death', 'debate', 'deny', 'design',
+    'did', 'die', 'dig', 'dish', 'do', 'does', 'dog', 'doing', 'done',
+    'doubt', 'down', 'due', 'dust', 'duty',
+    'eat', 'edge', 'eight', 'end', 'engage', 'enjoy', 'enough', 'exist',
+    'eye', 'eyes',
+    'gain', 'gas', 'gate', 'get', 'getting', 'go', 'god', 'goes',
+    'going', 'gone', 'good', 'got', 'guess', 'guide', 'gun', 'guy',
+    'habit', 'had', 'hang', 'has', 'hat', 'hate', 'he', 'head', 'heat',
+    'height', 'hid', 'hide', 'high', 'his', 'hit', 'honest', 'host',
+    'hot', 'how', 'huge', 'hunt', 'husband',
+    'idea', 'in', 'inside', 'instead', 'into', 'is', 'it', 'its',
+    'job', 'jobs', 'join', 'joy', 'judge', 'just',
+    'new', 'news', 'next', 'night', 'no', 'noise', 'not', 'nothing',
+    'now',
+    'on', 'one', 'ones', 'out', 'outside', 'own',
+    'question', 'quiet', 'quit', 'quite',
+    'said', 'sat', 'say', 'saying', 'see', 'seen', 'set', 'she',
+    'shoot', 'shot', 'show', 'shown', 'shut', 'side', 'sight', 'sit',
+    'sitting', 'so', 'son', 'song', 'soon', 'stand', 'standing', 'stay',
+    'stayed', 'stone', 'stood', 'sun',
+    'ten', 'test', 'than', 'that', 'the', 'then', 'these', 'they',
+    'thing', 'things', 'this', 'those', 'thought', 'thus', 'tight',
+    'to', 'today', 'tonight', 'too', 'two',
+    'us', 'use', 'used', 'using',
+    'wait', 'waiting', 'want', 'wanted', 'was', 'way', 'ways', 'we',
+    'went', 'what', 'when', 'white', 'who', 'why', 'wide', 'win',
+    'with', 'within', 'without', 'won',
+    'yeah', 'yes', 'yet', 'you', 'young', 'youth'
+  ]
+});

@@ -26,13 +26,7 @@
 
     <div class="field">
       <label data-i18n="level">Level</label>
-      <div class="opts stack">
-        <button data-control="level" data-value="rest" data-i18n="lvl_rest">Resting keys</button>
-        <button data-control="level" data-value="home" data-i18n="lvl_home">Home row</button>
-        <button data-control="level" data-value="home_index" data-i18n="lvl_home_index">Home + index</button>
-        <button data-control="level" data-value="alpha" data-i18n="lvl_alpha">Alphabet</button>
-        <button data-control="level" data-value="alpha_punct" data-i18n="lvl_alpha_punct">Alphabet + punctuation</button>
-      </div>
+      <div class="opts stack" id="levelopts"></div>
     </div>
 
     <div class="field">
@@ -103,9 +97,25 @@
   <script src="layouts/hardware/ansi_ortho.js"></script>
   <script src="layouts/hardware/iso_ortho.js"></script>
   <script src="layouts/hardware/ergodox.js"></script>
-  <!-- Software layouts (populate TTData.SW) -->
-  <script src="layouts/software/qwerty.js"></script>
-  <script src="layouts/software/dvorak.js"></script>
+  <!-- Software layouts (populate TTData.SW + TTData.addLevel) -->
+  <script src="layouts/software/qwerty/layout.js"></script>
+  <script src="layouts/software/qwerty/01_rest.js"></script>
+  <script src="layouts/software/qwerty/02_home.js"></script>
+  <script src="layouts/software/qwerty/03_home_erui.js"></script>
+  <script src="layouts/software/qwerty/04_home_index.js"></script>
+  <script src="layouts/software/qwerty/05_alpha.js"></script>
+  <script src="layouts/software/qwerty/06_alpha_punct.js"></script>
+  <script src="layouts/software/dvorak/layout.js"></script>
+  <script src="layouts/software/dvorak/01_rest.js"></script>
+  <script src="layouts/software/dvorak/02_home.js"></script>
+  <script src="layouts/software/dvorak/03_home_extend_1.js"></script>
+  <script src="layouts/software/dvorak/04_home_extend_2.js"></script>
+  <script src="layouts/software/dvorak/05_alpha.js"></script>
+  <script src="layouts/software/dvorak/06_alpha_punct.js"></script>
+  <script src="layouts/software/bg_phonetic/layout.js"></script>
+  <script src="layouts/software/bg_phonetic/01_home.js"></script>
+  <script src="layouts/software/bg_bds/layout.js"></script>
+  <script src="layouts/software/bg_bds/01_home.js"></script>
   <!-- App -->
   <script src="scripts/i18n.js"></script>
   <script src="scripts/engine.js"></script>
@@ -153,7 +163,7 @@
 
       function names() {
         var t = TTi18n.get(app.conf.language);
-        document.getElementById('lvlname').textContent = t['lvl_' + app.conf.level];
+        document.getElementById('lvlname').textContent = app.levelLabel();
         var sw = TTData.SW[app.conf.layout];
         document.getElementById('lyname').textContent = sw ? sw.name : app.conf.layout;
       }

@@ -65,7 +65,7 @@
       const shownBest = Math.max(prevBest, d.wpm);
       overlay.querySelector('.tt-r-title').textContent = t.resultTitle;
       const swName = (root.TTData.SW[conf.layout] || {}).name || conf.layout;
-      overlay.querySelector('.tt-r-ctx').textContent = (t['lvl_' + conf.level] || '') + ' · ' + swName;
+      overlay.querySelector('.tt-r-ctx').textContent = levelLabel() + ' · ' + swName;
       overlay.querySelector('.tt-r-wpm').textContent = d.wpm;
       overlay.querySelector('.tt-r-wpmlbl').textContent = t.wpm;
       const bestEl = overlay.querySelector('.tt-r-best');
@@ -108,6 +108,41 @@
       document.documentElement.lang = conf.language;
       if (overlay.classList.contains('open')) hideResults();
     }
+    // Resolve the display label for the current level (i18n → level def → raw id)
+    function levelLabel() {
+      var t = root.TTi18n.get(conf.language);
+      var lvls = root.TTData.levelsFor(conf.layout);
+      var lvl = lvls[conf.level];
+      return t['lvl_' + conf.level] || (lvl && lvl.label) || conf.level;
+    }
+
+    // Rebuild level buttons from the current layout's registered levels
+    function rebuildLevels() {
+      var container = document.getElementById('levelopts');
+      if (!container) return;
+      container.innerHTML = '';
+      var order = root.TTData.levelOrderFor(conf.layout);
+      var levels = root.TTData.levelsFor(conf.layout);
+      var t = root.TTi18n.get(conf.language);
+
+      // If current level doesn't exist in new layout, switch to first
+      if (!levels[conf.level] && order.length) {
+        conf.level = order[0];
+        engine.state.level = conf.level;
+      }
+
+      order.forEach(function (key) {
+        var lvl = levels[key];
+        var btn = document.createElement('button');
+        btn.setAttribute('data-control', 'level');
+        btn.setAttribute('data-value', key);
+        var i18nKey = 'lvl_' + key;
+        btn.setAttribute('data-i18n', i18nKey);
+        btn.textContent = t[i18nKey] || lvl.label || key;
+        container.appendChild(btn);
+      });
+    }
+
     // Populate every mapping <select> with Direct + each OTHER layout as a possible
     // physical input. Available for all target layouts (incl. QWERTY).
     function rebuildMapping() {
@@ -157,12 +192,17 @@
       conf[name] = value;
       if (name === 'layout') {
         if (conf.mapping === value) conf.mapping = 'direct';
-        engine.setLayout(value); engine.setMapFrom(mapVal()); rebuildMapping();
+        // Validate level exists in new layout before rebuild
+        var newLevels = root.TTData.levelsFor(value);
+        var newOrder  = root.TTData.levelOrderFor(value);
+        if (!newLevels[conf.level] && newOrder.length) conf.level = newOrder[0];
+        engine.state.level = conf.level;
+        engine.setLayout(value); engine.setMapFrom(mapVal()); rebuildMapping(); rebuildLevels();
       }
       else if (name === 'level') engine.setLevel(value);
       else if (name === 'hwLayout') engine.setHwLayout(value);
       else if (name === 'mapping') engine.setMapFrom(mapVal());
-      else if (name === 'language') { applyI18n(); rebuildMapping(); }
+      else if (name === 'language') { applyI18n(); rebuildMapping(); rebuildLevels(); }
       else if (name === 'theme') applyTheme();
       save(); reflect();
     }
@@ -192,10 +232,10 @@
       if (sel) setControl(sel.getAttribute('data-control'), sel.value);
     });
 
-    applyTheme(); applyAccent(); applyI18n(); rebuildMapping(); reflect();
+    applyTheme(); applyAccent(); applyI18n(); rebuildLevels(); rebuildMapping(); reflect();
     if (root.TTSelect) root.TTSelect.enhanceAll();
     engine.rebuild();
-    return { engine: engine, conf: conf };
+    return { engine: engine, conf: conf, levelLabel: levelLabel };
   }
 
   root.TTApp = { init: init };

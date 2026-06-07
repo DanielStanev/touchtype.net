@@ -93,8 +93,9 @@
 /* Split keyboard gap between halves */
 .tt-kgap { flex: none; }
 
-.tt-key--span-top {
+.tt-key.tt-key--span-top {
   height: calc(var(--kbd-unit) + var(--kbd-gap));
+  margin-bottom: calc(-1 * var(--kbd-gap));
   align-self: flex-start;
   position: relative;
   z-index: 1;
@@ -102,23 +103,26 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-.tt-key--span-bottom {
+.tt-key.tt-key--span-bottom {
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 /* L-step: the top piece is wider than the bottom piece.
- * An ::after draws the horizontal border across the exposed step area. */
-.tt-key--span-top-l::after {
+ * ::after masks the left-border overshoot and draws the step's inner corner. */
+.tt-key.tt-key--span-top-l::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: var(--span-step, 0px);
-  height: 0;
-  border-bottom: 1px solid var(--line-strong);
+  left: -1px;
+  width: calc(var(--span-step, 0px) + 1px);
+  height: var(--kbd-gap);
+  background: var(--bg);
+  border: none;
+  border-top: 1px solid var(--line-strong);
+  border-right: 1px solid var(--line-strong);
 }
-.tt-key.is-inactive.tt-key--span-top-l::after { border-bottom-color: var(--line); }
+.tt-key.is-inactive.tt-key--span-top-l::after { border-color: var(--line); }
 .tt-key {
   width: var(--kbd-unit);
   height: var(--kbd-unit);

@@ -1,0 +1,46 @@
+/* Dvorak — Level 3: Home row + C, F, K, L, M, P, R, V */
+TTData.addLevel('dvorak', {
+  id: 'home_extend_1',
+  order: 3,
+  label: 'Home row + C, F, K, L, M, P, R, V',
+  hint: 'Home row + C, F, K, L, M, P, R, V',
+  ids: [
+    'K_A', 'K_S', 'K_D', 'K_F', 'K_G', 'K_H', 'K_J', 'K_K', 'K_L', 'K_SEMICOLON',
+    'K_I', 'K_Y', 'K_V', 'K_P', 'K_M', 'K_R', 'K_O', 'K_PERIOD'
+  ],
+  wordBank: [
+    'admit', 'adopt', 'after', 'all', 'almost', 'also', 'and', 'another',
+    'around', 'ask', 'at',
+    'call', 'came', 'car', 'children', 'close', 'come', 'could', 'cut',
+    'depth', 'did', 'different', 'does', 'done',
+    'each', 'earth', 'eat', 'end', 'even',
+    'face', 'far', 'father', 'feet', 'find', 'first', 'fond', 'food',
+    'foot', 'for', 'form', 'found', 'four', 'from', 'fur',
+    'had', 'half', 'hand', 'hard', 'has', 'head', 'hear', 'heat',
+    'help', 'her', 'here', 'him', 'his', 'home', 'hot', 'house',
+    'idea', 'if', 'important', 'in', 'into', 'is', 'it', 'its',
+    'keep', 'kept', 'kick', 'kind', 'knit', 'knot',
+    'land', 'last', 'late', 'learn', 'leave', 'left', 'let', 'life',
+    'like', 'line', 'list', 'little', 'live', 'look',
+    'made', 'make', 'man', 'mark', 'me', 'men', 'mean', 'mile', 'mind',
+    'miss', 'month', 'months', 'more', 'most', 'mother', 'mountain',
+    'mouth', 'move', 'much', 'must',
+    'name', 'near', 'need', 'net', 'never', 'no', 'not', 'note', 'nut',
+    'of', 'off', 'often', 'old', 'on', 'once', 'one', 'open', 'or',
+    'other', 'our', 'out', 'outside', 'over',
+    'part', 'past', 'path', 'pen', 'people', 'pick', 'picture', 'place',
+    'plan', 'plant', 'point', 'pond', 'print', 'put',
+    'read', 'real', 'river', 'run',
+    'said', 'same', 'school', 'sea', 'seat', 'second', 'seem', 'set',
+    'she', 'should', 'shut', 'side', 'since', 'skip', 'small', 'some',
+    'sometimes', 'son', 'soon', 'sound', 'spell', 'spent', 'start',
+    'state', 'step', 'stiff', 'still', 'stomp', 'stone', 'stop', 'such',
+    'sun',
+    'take', 'talk', 'tell', 'ten', 'test', 'the', 'their', 'them',
+    'then', 'there', 'these', 'think', 'thinks', 'this', 'those',
+    'three', 'time', 'to', 'too', 'took', 'touch', 'tree', 'trick',
+    'true', 'turn', 'until',
+    'under', 'unfit', 'unit', 'unite', 'upon', 'upset', 'us', 'use',
+    'value', 'vast', 'visit', 'voice', 'vote'
+  ]
+});

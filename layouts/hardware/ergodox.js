@@ -1,7 +1,8 @@
 /* Ergodox — columnar split layout, no row stagger.
  * Each row has a { gap: N } entry between the left and right halves.
  * The gap width represents the physical separation between the two keyboard halves.
- * Modifier keys are omitted; the thumb cluster is represented by two space keys. */
+ * Mod keys on the outer edges keep columns vertically aligned (6 left + 7 right).
+ * The thumb cluster is represented by two space keys. */
 TTData.HW.ergodox = {
   id: 'ergodox',
   name: 'Ergodox',
@@ -23,6 +24,7 @@ TTData.HW.ergodox = {
       { id: 'K_EQUAL',     finger: 'rp' }
     ]},
     { name: 'top', stagger: 0, keys: [
+      { id: 'K_TAB',       mod: true },
       { id: 'K_Q',         finger: 'lp' },
       { id: 'K_W',         finger: 'lr' },
       { id: 'K_E',         finger: 'lm' },
@@ -38,6 +40,7 @@ TTData.HW.ergodox = {
       { id: 'K_RBRACKET',  finger: 'rp' }
     ]},
     { name: 'home', stagger: 0, keys: [
+      { id: 'K_ESC',       mod: true },
       { id: 'K_A',         finger: 'lp', resting: true },
       { id: 'K_S',         finger: 'lr', resting: true },
       { id: 'K_D',         finger: 'lm', resting: true },
@@ -49,9 +52,11 @@ TTData.HW.ergodox = {
       { id: 'K_K',         finger: 'rm', resting: true },
       { id: 'K_L',         finger: 'rr', resting: true },
       { id: 'K_SEMICOLON', finger: 'rp', resting: true },
-      { id: 'K_QUOTE',     finger: 'rp' }
+      { id: 'K_QUOTE',     finger: 'rp' },
+      { id: 'K_ENTER',     mod: true }
     ]},
     { name: 'bottom', stagger: 0, keys: [
+      { id: 'K_LSHIFT',    mod: true },
       { id: 'K_Z',         finger: 'lp' },
       { id: 'K_X',         finger: 'lr' },
       { id: 'K_C',         finger: 'lm' },
@@ -62,7 +67,9 @@ TTData.HW.ergodox = {
       { id: 'K_M',         finger: 'ri' },
       { id: 'K_COMMA',     finger: 'rm' },
       { id: 'K_PERIOD',    finger: 'rr' },
-      { id: 'K_SLASH',     finger: 'rp' }
+      { id: 'K_SLASH',     finger: 'rp' },
+      { id: 'K_BACKSLASH', finger: 'rp' },
+      { id: 'K_RSHIFT',    mod: true }
     ]},
     // Thumb cluster: one space key per half
     { name: 'space', stagger: 0, keys: [

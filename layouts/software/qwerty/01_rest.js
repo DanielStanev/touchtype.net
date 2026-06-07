@@ -7,7 +7,7 @@ TTData.addLevel('qwerty', {
   ids: ['K_A', 'K_S', 'K_D', 'K_F', 'K_J', 'K_K', 'K_L', 'K_SEMICOLON'],
   wordBank: [
     'ad', 'add', 'ads', 'aff', 'all', 'as', 'ask',
-    'dad', 'dads', 'daffodils', 'dal', 'dalf', 'dass', 'dask',
+    'dad', 'dads', 'daffadals', 'dal', 'dalf', 'dass', 'dask',
     'fad', 'fads', 'fall', 'falls', 'flak', 'flask', 'flass',
     'jak', 'jal', 'jaff', 'jask', 'jalf',
     'kaff', 'kald', 'kall', 'kass', 'klaf', 'klass',

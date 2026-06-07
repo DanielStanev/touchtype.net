@@ -72,7 +72,7 @@ body {
 /* line-drawn keys, Folio idiom */
 .tt-key { border: 1px solid var(--line-strong); background: transparent; color: var(--ink-2); font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
 .tt-key.is-inactive { opacity: 0.26; border-color: var(--line); }
-.tt-key.is-next { border-color: var(--accent); color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: var(--accent-soft); }
+.tt-key.is-next { border-color: var(--fzc, var(--fz-th)); color: var(--fzc, var(--fz-th)); box-shadow: inset 0 0 0 1px var(--fzc, var(--fz-th)); background: color-mix(in oklch, var(--fzc, var(--fz-th)) 18%, transparent); }
 .tt-space { border-radius: var(--radius); }
 .legend { display: flex; gap: 18px; font: 400 10.5px 'IBM Plex Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .legend .ls { display: flex; align-items: center; gap: 7px; }

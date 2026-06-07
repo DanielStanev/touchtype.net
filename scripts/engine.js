@@ -198,6 +198,7 @@
           }
 
           if (k.resting) {
+            keyEl.dataset.resting = '1';
             const bump = document.createElement('span');
             bump.className = 'tt-bump';
             keyEl.appendChild(bump);

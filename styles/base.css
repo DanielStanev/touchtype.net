@@ -37,16 +37,17 @@
   --accent-soft: oklch(0.66 0.13 var(--accent-h) / 0.2);
 }
 
-/* finger-zone palette — equal chroma/lightness, varied hue */
+/* finger-zone palette — equal chroma/lightness, hues zigzag so
+   adjacent fingers contrast (~130° apart instead of a smooth gradient) */
 :root {
-  --fz-lp: oklch(0.7 0.09 25);
-  --fz-lr: oklch(0.7 0.09 65);
-  --fz-lm: oklch(0.7 0.09 145);
-  --fz-li: oklch(0.7 0.09 195);
-  --fz-ri: oklch(0.7 0.09 245);
-  --fz-rm: oklch(0.7 0.09 290);
-  --fz-rr: oklch(0.7 0.09 330);
-  --fz-rp: oklch(0.7 0.09 10);
+  --fz-lp: oklch(0.7 0.09 10);
+  --fz-lr: oklch(0.7 0.09 140);
+  --fz-lm: oklch(0.7 0.09 270);
+  --fz-li: oklch(0.7 0.09 50);
+  --fz-ri: oklch(0.7 0.09 190);
+  --fz-rm: oklch(0.7 0.09 320);
+  --fz-rr: oklch(0.7 0.09 90);
+  --fz-rp: oklch(0.7 0.09 230);
   --fz-th: oklch(0.7 0.05 256);
 }
 
@@ -151,16 +152,16 @@
 
 /* resting markers (toggle) */
 .tt-bump { display: none; position: absolute; bottom: calc(var(--kbd-unit) * 0.16); left: 50%; transform: translateX(-50%);
-  width: calc(var(--kbd-unit) * 0.26); height: 2px; border-radius: 2px; background: currentColor; opacity: 0.5; }
+  width: calc(var(--kbd-unit) * 0.26); height: 2px; border-radius: 2px; background: var(--ink); opacity: 0.6; }
 .tt-keyboard[data-resting="1"] .tt-key[data-resting] .tt-bump { display: block; }
 
-/* next-key highlight */
+/* next-key highlight — uses the finger-zone colour so the typist
+   knows which finger to use even when finger zones are toggled off */
 .tt-key.is-next {
-  background: var(--accent-soft);
-  color: var(--accent);
-  box-shadow: inset 0 0 0 1.5px var(--accent);
+  background: color-mix(in oklch, var(--fzc, var(--fz-th)) 18%, transparent);
+  color: var(--fzc, var(--fz-th));
+  box-shadow: inset 0 0 0 1.5px var(--fzc, var(--fz-th));
 }
-.tt-keyboard[data-fingers="1"] .tt-key.is-next { background: var(--accent-soft); }
 
 @media (prefers-reduced-motion: reduce) {
   .tt-caret, .tt-words, .tt-key, .tt-c { transition: none; animation: none; }

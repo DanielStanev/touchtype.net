@@ -9,11 +9,11 @@
       direct: 'Direct', mapq: 'Map from QWERTY', mapfrom: 'From %s', restart: 'Restart', focusPrompt: 'Click here to start typing',
       done: 'Finished — press Enter to go again', resultTitle: 'Session complete', again: 'Type again', againKey: 'press Enter to type again', best: 'best', gross: 'gross wpm', keystrokes: 'keystrokes',
       lvl_rest: 'Resting keys', lvl_home: 'Home row', lvl_home_erui: 'Home + E, R, U, I', lvl_home_index: 'Home + index', lvl_home_extend_1: 'Home + C, F, K, L, M, P, R, V', lvl_home_extend_2: 'Home + B, G, J, Q, W, X, Y, Z', lvl_alpha: 'Alphabet', lvl_alpha_punct: 'Alphabet + punctuation' },
-    bg: { lang: 'Български', tagline: 'Практикувай сляпо писане.', wpm: 'зпм', acc: 'точност', err: 'грешки', time: 'време',
+    bg: { lang: 'Български', tagline: 'Практикувай сляпо писане.', wpm: 'думи/минута', acc: 'точност', err: 'грешки', time: 'време',
       settings: 'Настройки', layout: 'Наредба', level: 'Ниво', mapping: 'Входно съответствие', language: 'Език', theme: 'Тема',
       accent: 'Акцент', fingers: 'Зони на пръстите', nextkey: 'Следващ клавиш', resting: 'Позиции за покой', light: 'Светла', dark: 'Тъмна',
       direct: 'Директно', mapq: 'Карта от QWERTY', mapfrom: 'От %s', restart: 'Начало', focusPrompt: 'Натисни тук, за да започнеш',
-      done: 'Готово — натисни Enter за нов опит', resultTitle: 'Сесията завърши', again: 'Пак', againKey: 'натисни Enter за нов опит', best: 'най-добро', gross: 'зпм бруто', keystrokes: 'удара',
+      done: 'Готово — натисни Enter за нов опит', resultTitle: 'Сесията завърши', again: 'Пак', againKey: 'натисни Enter за нов опит', best: 'най-добро', gross: 'думи/минута бруто', keystrokes: 'удара',
       lvl_rest: 'Клавиши за покой', lvl_home: 'Домашен ред', lvl_home_erui: 'Домашен + Е, Р, У, И', lvl_home_index: 'Домашен + показалец', lvl_home_extend_1: 'Домашен + C, F, K, L, M, P, R, V', lvl_home_extend_2: 'Домашен + B, G, J, Q, W, X, Y, Z', lvl_alpha: 'Азбука', lvl_alpha_punct: 'Азбука + препинателни знаци' }
   };
   root.TTi18n = {

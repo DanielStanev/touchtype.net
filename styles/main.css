@@ -2,7 +2,7 @@
  * Left settings rail + top readout strip + centered words + line-drawn keyboard. */
 @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
-:root { --kbd-unit: 44px; --kbd-gap: 7px; --radius: 6px; }
+:root { --kbd-unit: 44px; --kbd-gap: 8px; --radius: 6px; }
 [data-theme="light"] { --done: oklch(0.79 0.01 254); --upcoming: oklch(0.3 0.02 256); }
 [data-theme="dark"]  { --done: oklch(0.46 0.014 262); --upcoming: oklch(0.93 0.012 260); }
 
